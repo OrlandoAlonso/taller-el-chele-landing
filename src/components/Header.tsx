@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Wrench, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.jpg";
 const navItems = [{
   label: "Servicios",
   href: "#servicios"
@@ -41,9 +42,11 @@ const Header = () => {
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:scale-105">
-              <Wrench className="w-5 h-5 text-primary-foreground" />
-            </div>
+            <img 
+              src={logo} 
+              alt="Taller El Chele Logo" 
+              className="w-12 h-12 rounded-lg object-cover transition-transform group-hover:scale-105"
+            />
             <span className="font-display text-xl font-bold text-primary-foreground">Taller El Chele</span>
           </a>
 
