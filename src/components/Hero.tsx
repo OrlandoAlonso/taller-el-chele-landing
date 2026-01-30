@@ -1,17 +1,29 @@
 import { Phone, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroTeamImage from "@/assets/hero-team.jpg";
+import heroWorkshopImage from "@/assets/hero-workshop.jpg";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      {/* Background Workshop Image */}
+      <div className="absolute inset-0">
+        <img
+          src={heroWorkshopImage}
+          alt="Taller mecánico"
+          className="w-full h-full object-cover"
+        />
+        {/* Dark overlay for better contrast */}
+        <div className="absolute inset-0 bg-background/70 dark:bg-background/80" />
+      </div>
+
       {/* Two-column layout */}
       <div className="section-container relative z-10 pt-20 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
           <div className="text-left">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/15 border border-accent/30 mb-6 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/15 border border-accent/30 mb-6 animate-fade-in backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               <span className="text-sm font-medium text-accent">
                 Más de 30 años de experiencia
@@ -37,7 +49,7 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Right Column - Image with fade */}
+          {/* Right Column - Team Image with fade (on top of background) */}
           <div className="relative hidden lg:block">
             <div className="relative aspect-[4/3] overflow-hidden rounded-r-2xl">
               <img
@@ -46,11 +58,11 @@ const Hero = () => {
                 className="w-full h-full object-cover"
               />
               {/* Fade overlay to the left */}
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/30 to-transparent" />
               {/* Fade overlay on top */}
-              <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background via-background/60 to-transparent" />
+              <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background/60 via-background/30 to-transparent" />
               {/* Fade overlay on bottom */}
-              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background via-background/60 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/60 via-background/30 to-transparent" />
             </div>
           </div>
         </div>
@@ -98,14 +110,16 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Mobile Image - shown below text on small screens */}
-      <div className="absolute inset-0 lg:hidden">
-        <img
-          src={heroTeamImage}
-          alt="Equipo de Taller El Chele"
-          className="w-full h-full object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+      {/* Mobile - Team image overlay */}
+      <div className="absolute inset-0 lg:hidden pointer-events-none">
+        <div className="absolute bottom-1/4 right-0 w-3/4 h-1/2">
+          <img
+            src={heroTeamImage}
+            alt="Equipo de Taller El Chele"
+            className="w-full h-full object-cover opacity-30 rounded-l-2xl"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent" />
+        </div>
       </div>
 
       {/* Bottom Curve */}
