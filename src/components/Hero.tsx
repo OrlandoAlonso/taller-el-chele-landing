@@ -44,7 +44,7 @@ const Hero = () => {
           {/* Right Column - Team Image (fade OUTWARD at edges) */}
           <div className="relative hidden lg:block">
             <div className="relative aspect-[4/3] overflow-hidden">
-              <img src={heroTeamImage} alt="Equipo de Taller El Chele" className="w-full h-full object-cover [mask-image:radial-gradient(ellipse_at_center,rgba(0,0,0,1)_58%,rgba(0,0,0,0)_92%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,rgba(0,0,0,1)_58%,rgba(0,0,0,0)_92%)]" />
+              
               {/* Slight left blend so the image disappears into the text side */}
               
             </div>
