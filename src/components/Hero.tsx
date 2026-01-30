@@ -38,7 +38,7 @@ const Hero = () => {
 
           {/* Subheadline */}
           <p 
-            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg animate-fade-in" 
+            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg mx-auto animate-fade-in" 
             style={{ animationDelay: "0.2s" }}
           >
             Más de 30 años brindando mantenimiento y reparación confiable para
