@@ -1,8 +1,6 @@
 import { Wrench, Phone, MapPin, Clock, Facebook, Instagram } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer className="bg-primary dark:bg-card py-16">
+  return <footer className="bg-primary dark:bg-card py-16">
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
@@ -29,11 +27,13 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-primary-foreground/70 dark:text-muted-foreground text-sm">
                 <Phone className="w-4 h-4 text-accent" />
-                <span>+503 2222-3333</span>
+                <span>+505 8572-9478</span>
               </li>
               <li className="flex items-start gap-3 text-primary-foreground/70 dark:text-muted-foreground text-sm">
                 <MapPin className="w-4 h-4 text-accent mt-0.5" />
-                <span>Av. Principal #123, Col. Centro, Ciudad</span>
+                <span>VI. Alemania, Del Gallo Mas Gallo, 1C. al Sur.
+
+              </span>
               </li>
             </ul>
           </div>
@@ -65,18 +65,10 @@ const Footer = () => {
               Síguenos
             </h4>
             <div className="flex gap-3">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-primary-foreground/10 dark:bg-muted flex items-center justify-center hover:bg-accent transition-colors group"
-                aria-label="Facebook"
-              >
+              <a href="#" className="w-10 h-10 rounded-lg bg-primary-foreground/10 dark:bg-muted flex items-center justify-center hover:bg-accent transition-colors group" aria-label="Facebook">
                 <Facebook className="w-5 h-5 text-primary-foreground dark:text-foreground group-hover:text-accent-foreground" />
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-primary-foreground/10 dark:bg-muted flex items-center justify-center hover:bg-accent transition-colors group"
-                aria-label="Instagram"
-              >
+              <a href="#" className="w-10 h-10 rounded-lg bg-primary-foreground/10 dark:bg-muted flex items-center justify-center hover:bg-accent transition-colors group" aria-label="Instagram">
                 <Instagram className="w-5 h-5 text-primary-foreground dark:text-foreground group-hover:text-accent-foreground" />
               </a>
             </div>
@@ -91,8 +83,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
