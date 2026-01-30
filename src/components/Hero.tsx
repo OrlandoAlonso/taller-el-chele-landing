@@ -10,10 +10,10 @@ const Hero = () => {
         <img 
           src={heroWorkshopImage} 
           alt="Taller mecánico" 
-          className="w-full h-full object-cover dark:opacity-60" 
+          className="w-full h-full object-cover blur-sm dark:blur-0 dark:opacity-60" 
         />
-        {/* Light mode: gradient from left (solid) to right (see-through). Dark mode: darker */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/50 dark:from-background/90 dark:via-background/70 dark:to-background/40" />
+        {/* Light mode: subtle tint + blur on image. Dark mode: gradient overlay */}
+        <div className="absolute inset-0 bg-background/40 dark:bg-transparent dark:bg-gradient-to-r dark:from-background/90 dark:via-background/70 dark:to-background/40" />
       </div>
 
       {/* Content */}
