@@ -63,7 +63,7 @@ const Header = () => {
               </a>
             ))}
             <Button variant="ghost" size="icon" onClick={toggleTheme} className="ml-2">
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5 text-primary" />}
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5 text-foreground" />}
             </Button>
           </div>
 
