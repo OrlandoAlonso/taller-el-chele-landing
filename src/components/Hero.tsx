@@ -11,10 +11,10 @@ const Hero = () => {
         <img
           src={heroWorkshopImage}
           alt="Taller mecánico"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-40 dark:opacity-50"
         />
-        {/* Overlay for better contrast - stronger in light mode */}
-        <div className="absolute inset-0 bg-background/85 dark:bg-background/75" />
+        {/* Overlay for better contrast */}
+        <div className="absolute inset-0 bg-background/60 dark:bg-background/50" />
       </div>
 
       {/* Two-column layout */}
@@ -49,7 +49,7 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Right Column - Team Image with fade on all sides */}
+          {/* Right Column - Team Image with fade outward on all sides */}
           <div className="relative hidden lg:block">
             <div className="relative aspect-[4/3] overflow-hidden">
               <img
@@ -57,10 +57,11 @@ const Hero = () => {
                 alt="Equipo de Taller El Chele"
                 className="w-full h-full object-cover"
               />
-              {/* Radial fade from center - creates soft vignette effect */}
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)/0.7)_70%,hsl(var(--background))_100%)]" />
-              {/* Extra fade to left for seamless text blend */}
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" />
+              {/* Fade outward from center - visible center, faded edges */}
+              <div className="absolute inset-0 shadow-[inset_0_0_80px_40px_hsl(var(--background))]" />
+              {/* Extra soft fade on all edges */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background opacity-70" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background opacity-70" />
             </div>
           </div>
         </div>
