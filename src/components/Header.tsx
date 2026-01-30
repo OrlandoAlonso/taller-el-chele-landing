@@ -43,12 +43,15 @@ const Header = () => {
       <div className="section-container">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <img 
-              src={logo} 
-              alt="Taller El Chele Logo" 
-              className="w-12 h-12 rounded-lg object-cover transition-transform group-hover:scale-105"
-            />
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="relative">
+              <img 
+                src={logo} 
+                alt="Taller El Chele Logo" 
+                className="w-12 h-12 rounded-xl object-cover transition-all duration-300 group-hover:scale-105 ring-2 ring-primary/30 shadow-lg shadow-primary/20"
+              />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
             <span className="font-display text-xl font-bold text-primary-foreground">Taller El Chele</span>
           </a>
 
