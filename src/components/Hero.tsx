@@ -39,14 +39,18 @@ const Hero = () => {
 
           {/* Right Column - Image with fade */}
           <div className="relative hidden lg:block">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-r-2xl">
               <img
                 src={heroTeamImage}
                 alt="Equipo de Taller El Chele"
                 className="w-full h-full object-cover"
               />
               {/* Fade overlay to the left */}
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent" />
+              {/* Fade overlay on top */}
+              <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background via-background/60 to-transparent" />
+              {/* Fade overlay on bottom */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background via-background/60 to-transparent" />
             </div>
           </div>
         </div>
