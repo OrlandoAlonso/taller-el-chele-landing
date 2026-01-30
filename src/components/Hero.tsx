@@ -30,7 +30,7 @@ const Hero = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg mx-auto animate-fade-in" style={{
+          <p className="text-lg md:text-xl mb-10 max-w-lg mx-auto animate-fade-in text-muted" style={{
           animationDelay: "0.2s"
         }}>
             Más de 30 años brindando mantenimiento y reparación confiable para
@@ -60,21 +60,21 @@ const Hero = () => {
             <span className="text-3xl font-display font-bold text-accent">
               1000+
             </span>
-            <span className="text-sm">Clientes satisfechos</span>
+            <span className="text-sm text-muted">Clientes satisfechos</span>
           </div>
           <div className="w-px h-8 bg-border hidden sm:block" />
           <div className="flex items-center gap-2">
             <span className="text-3xl font-display font-bold text-accent">
               30+
             </span>
-            <span className="text-sm">Años de experiencia</span>
+            <span className="text-sm text-muted">Años de experiencia</span>
           </div>
           <div className="w-px h-8 bg-border hidden sm:block" />
           <div className="flex items-center gap-2">
             <span className="text-3xl font-display font-bold text-accent">
               100%
             </span>
-            <span className="text-sm">Garantizado</span>
+            <span className="text-sm text-muted">Garantizado</span>
           </div>
         </div>
       </div>
