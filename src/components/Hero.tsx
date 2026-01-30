@@ -63,7 +63,7 @@ const Hero = () => {
             Agenda tu cita
           </Button>
           <Button variant="outline" size="xl" className="group border-primary" asChild>
-            <a href="https://wa.me/+50585729478" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/+50577725113" target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon className="w-5 h-5 transition-transform group-hover:scale-110" />
               Contáctanos
             </a>

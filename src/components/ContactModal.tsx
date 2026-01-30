@@ -74,7 +74,7 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
     const whatsappMessage = encodeURIComponent(
       `¡Hola! Mi nombre es ${data.name}.\n\nCorreo: ${data.email}\nTeléfono: ${data.phone}\n\nMensaje: ${data.message}`
     );
-    const whatsappUrl = `https://wa.me/+50585729478?text=${whatsappMessage}`;
+    const whatsappUrl = `https://wa.me/+50577725113?text=${whatsappMessage}`;
 
     // Open WhatsApp
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
