@@ -18,7 +18,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="section-container relative z-10 pt-20 pb-16">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center bg-background/60 dark:bg-transparent backdrop-blur-sm dark:backdrop-blur-none rounded-2xl p-6 md:p-8">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/15 border border-accent/30 mb-6 animate-fade-in backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
