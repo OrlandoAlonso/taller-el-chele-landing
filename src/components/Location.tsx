@@ -2,7 +2,7 @@ import { MapPin, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Location = () => {
-  const address = "Av. Principal #123, Col. Centro, Ciudad";
+  const address = "VI. Alemania, Del Gallo Mas Gallo, 1C. al Sur.";
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     "Taller El Chele " + address
   )}`;
