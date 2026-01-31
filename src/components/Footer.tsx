@@ -1,6 +1,14 @@
-import { Wrench, Phone, MapPin, Clock, Facebook, Instagram } from "lucide-react";
+import {
+  Wrench,
+  Phone,
+  MapPin,
+  Clock,
+  Facebook,
+  Instagram,
+} from "lucide-react";
 const Footer = () => {
-  return <footer className="bg-primary dark:bg-card py-16">
+  return (
+    <footer className="bg-primary dark:bg-card py-16">
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
@@ -31,9 +39,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3 text-primary-foreground/70 dark:text-muted-foreground text-sm">
                 <MapPin className="w-4 h-4 text-accent mt-0.5" />
-                <span>VI. Alemania, Del Gallo Mas Gallo, 1C. al Sur.
-
-              </span>
+                <span>VI. Alemania, Del Gallo Mas Gallo, 1C. al Sur.</span>
               </li>
             </ul>
           </div>
@@ -54,7 +60,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-primary-foreground/70 dark:text-muted-foreground text-sm">
                 <Clock className="w-4 h-4 text-accent" />
-                <span>Domingo: <span className="text-red-400">Cerrado</span></span>
+                <span>
+                  Domingo: <span className="text-red-400">Cerrado</span>
+                </span>
               </li>
             </ul>
           </div>
@@ -65,11 +73,13 @@ const Footer = () => {
               Síguenos
             </h4>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-lg bg-primary-foreground/10 dark:bg-muted flex items-center justify-center hover:bg-accent transition-colors group" aria-label="Facebook">
+              <a
+                href="https://www.facebook.com/tallerelchele1108/"
+                className="w-10 h-10 rounded-lg bg-primary-foreground/10 dark:bg-muted flex items-center justify-center hover:bg-accent transition-colors group"
+                aria-label="Facebook"
+                target="_blank"
+              >
                 <Facebook className="w-5 h-5 text-primary-foreground dark:text-foreground group-hover:text-accent-foreground" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-primary-foreground/10 dark:bg-muted flex items-center justify-center hover:bg-accent transition-colors group" aria-label="Instagram">
-                <Instagram className="w-5 h-5 text-primary-foreground dark:text-foreground group-hover:text-accent-foreground" />
               </a>
             </div>
           </div>
@@ -83,6 +93,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
 export default Footer;
