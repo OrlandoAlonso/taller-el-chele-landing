@@ -8,7 +8,7 @@ const Location = () => {
   )}`;
 
   return (
-    <section id="contacto" className="section-padding bg-muted">
+    <section id="contacto" className="min-h-screen section-padding bg-muted flex flex-col justify-center">
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-12">

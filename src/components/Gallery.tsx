@@ -82,7 +82,7 @@ const Gallery = () => {
 
   return (
     <>
-      <section id="galeria" className="section-padding bg-background">
+      <section id="galeria" className="min-h-screen section-padding bg-background flex flex-col justify-center">
         <div className="section-container">
           {/* Section Header */}
           <div className="text-center mb-12">

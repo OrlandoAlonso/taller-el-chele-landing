@@ -29,7 +29,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="servicios" className="section-padding bg-background">
+    <section id="servicios" className="min-h-screen section-padding bg-background flex flex-col justify-center">
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-16">
