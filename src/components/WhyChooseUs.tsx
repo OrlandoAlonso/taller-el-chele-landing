@@ -29,7 +29,7 @@ const reasons = [
 
 const WhyChooseUs = () => {
   return (
-    <section id="nosotros" className="section-padding bg-muted">
+    <section id="nosotros" className="min-h-screen section-padding bg-muted flex flex-col justify-center">
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-16">
