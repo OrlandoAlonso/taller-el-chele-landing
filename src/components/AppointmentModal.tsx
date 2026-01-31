@@ -103,6 +103,7 @@ interface AppointmentModalProps {
 const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const form = useForm<AppointmentFormValues>({
     resolver: zodResolver(appointmentSchema),
@@ -116,10 +117,13 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
   const selectedDate = form.watch("date");
   const availableSlots = getAvailableTimeSlots(selectedDate);
 
-  // Reset time when date changes
+  // Reset time when date changes and close calendar
   const handleDateChange = (date: Date | undefined, onChange: (date: Date | undefined) => void) => {
     onChange(date);
     form.setValue("time", "");
+    if (date) {
+      setIsCalendarOpen(false);
+    }
   };
 
   const onSubmit = async (data: AppointmentFormValues) => {
@@ -205,7 +209,7 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Fecha</FormLabel>
-                  <Popover>
+                  <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
