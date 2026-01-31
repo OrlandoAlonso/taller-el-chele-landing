@@ -72,7 +72,7 @@ const Hero = () => {
         </div>
 
         {/* Social Media Buttons */}
-        <div className="flex gap-4 justify-center mt-6 animate-fade-in" style={{
+        <div className="flex gap-4 items-center justify-center mt-6 animate-fade-in w-full" style={{
         animationDelay: "0.35s"
       }}>
           <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center hover:bg-accent hover:scale-110 transition-all duration-300 group" aria-label="Facebook">
