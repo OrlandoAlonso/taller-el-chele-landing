@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ContactModal from "@/components/ContactModal";
 import logo from "@/assets/logo.jpg";
+
 const navItems = [{
   label: "Servicios",
   href: "#servicios"
@@ -16,11 +17,17 @@ const navItems = [{
   label: "Contacto",
   href: "#contacto"
 }];
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+
+  useEffect(() => {
+    // Set dark mode permanently
+    document.documentElement.classList.add("dark");
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -28,17 +35,6 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  useEffect(() => {
-    // Check initial preference
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setIsDark(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle("dark");
-  };
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-md" : "bg-transparent"}`}>
       <div className="section-container">
         <nav className="flex items-center justify-between h-16 md:h-20">
@@ -72,16 +68,10 @@ const Header = () => {
                 </a>
               )
             )}
-            <Button variant="ghost" size="icon" onClick={toggleTheme} className="ml-2">
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5 text-foreground" />}
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
-            <Button variant="ghost" size="icon" onClick={toggleTheme}>
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </Button>
+          <div className="flex items-center md:hidden">
             <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>
