@@ -171,7 +171,7 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
           <p className="font-medium mb-1">Horarios de atención:</p>
           <p>Lunes a Viernes: 8:00 AM - 5:30 PM</p>
           <p>Sábados: 8:00 AM - 12:00 PM</p>
-          <p>Domingos: Cerrado</p>
+          <p>Domingos: <span className="text-red-400">Cerrado</span></p>
         </div>
 
         <Form {...form}>
