@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ContactModal from "@/components/ContactModal";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo-sinfondo.png";
 
 const navItems = [{
   label: "Servicios",
@@ -44,9 +44,8 @@ const Header = () => {
               <img 
                 src={logo} 
                 alt="Taller El Chele Logo" 
-                className="w-12 h-12 rounded-xl object-cover transition-all duration-300 group-hover:scale-105 ring-2 ring-primary/30 shadow-lg shadow-primary/20"
+                className="w-14 h-14 object-contain transition-all duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <span className="font-display text-xl font-bold text-primary-foreground">Taller El Chele</span>
           </a>
