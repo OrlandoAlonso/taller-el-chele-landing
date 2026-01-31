@@ -2,13 +2,11 @@ import { MapPin, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Location = () => {
-  const address = "VI. Alemania, Del Gallo Mas Gallo, 1C. al Sur.";
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    "Taller El Chele " + address
-  )}`;
-
   return (
-    <section id="contacto" className="min-h-screen section-padding bg-muted flex flex-col justify-center">
+    <section
+      id="contacto"
+      className="min-h-screen section-padding bg-muted flex flex-col justify-center"
+    >
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -26,7 +24,7 @@ const Location = () => {
           {/* Map Placeholder */}
           <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-card border border-border shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.5850548477886!2d-89.18718268518714!3d13.69413629039382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f633067dbcbe39d%3A0x7a83af4fb4a7f2f6!2sSan%20Salvador%2C%20El%20Salvador!5e0!3m2!1sen!2sus!4v1706800000000!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.7991158452902!2d-86.21851165796342!3d12.12679962490439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73ff9d1c151cd5%3A0x13ab93f7ad883fb2!2sTaller%20El%20Chele!5e0!3m2!1ses-419!2sni!4v1769848199667!5m2!1ses-419!2sni"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -48,11 +46,17 @@ const Location = () => {
                 <p className="font-semibold text-card-foreground">
                   Taller El Chele
                 </p>
-                <p className="text-muted-foreground">{address}</p>
+                <p className="text-muted-foreground">
+                  VI. Alemania, Del Gallo Mas Gallo, 1C. al Sur.
+                </p>
               </div>
             </div>
             <Button asChild className="gap-2">
-              <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.google.com/maps/place/Taller+El+Chele/@12.1262656,-86.2363119,14z/data=!4m10!1m2!2m1!1sTaller+El+Chele,+VI.+Alemania+Del+Gallo+Mas+Gallo+Las+Americas,+1C.+al+Sur,+Managua+11001!3m6!1s0x8f73ff9d1c151cd5:0x13ab93f7ad883fb2!8m2!3d12.1267874!4d-86.2186716!15sCllUYWxsZXIgRWwgQ2hlbGUsIFZJLiBBbGVtYW5pYSBEZWwgR2FsbG8gTWFzIEdhbGxvIExhcyBBbWVyaWNhcywgMUMuIGFsIFN1ciwgTWFuYWd1YSAxMTAwMZIBCG1lY2hhbmlj4AEA!16s%2Fg%2F11yy_1vcq3?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Abrir en Google Maps
                 <ExternalLink className="w-4 h-4" />
               </a>
