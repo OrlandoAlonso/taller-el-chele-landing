@@ -83,8 +83,9 @@ const appointmentSchema = z.object({
   phone: z
     .string()
     .trim()
-    .min(1, { message: "El teléfono es requerido" })
-    .max(20, { message: "El teléfono debe tener menos de 20 caracteres" }),
+    .min(8, { message: "El teléfono debe tener 8 dígitos" })
+    .max(8, { message: "El teléfono debe tener 8 dígitos" })
+    .regex(/^\d{8}$/, { message: "El teléfono debe contener solo 8 dígitos" }),
   date: z.date({
     required_error: "La fecha es requerida",
   }),
@@ -196,7 +197,22 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
                 <FormItem>
                   <FormLabel>Teléfono *</FormLabel>
                   <FormControl>
-                    <Input type="tel" placeholder="+505 8888-8888" {...field} />
+                    <div className="flex">
+                      <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm">
+                        +505
+                      </span>
+                      <Input 
+                        type="tel" 
+                        placeholder="8888 8888" 
+                        className="rounded-l-none"
+                        maxLength={9}
+                        value={field.value ? field.value.replace(/(\d{4})(\d{0,4})/, '$1 $2').trim() : ''}
+                        onChange={(e) => {
+                          const rawValue = e.target.value.replace(/\D/g, '').slice(0, 8);
+                          field.onChange(rawValue);
+                        }}
+                      />
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
