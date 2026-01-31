@@ -179,7 +179,7 @@ const Gallery = () => {
 
       {/* Lightbox Modal */}
       <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
-        <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95 border-none">
+        <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95 border-none [&>button]:hidden">
           <div 
             className="relative w-full h-[80vh] flex items-center justify-center"
             onTouchStart={onTouchStart}
