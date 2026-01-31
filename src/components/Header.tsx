@@ -58,12 +58,12 @@ const Header = () => {
                 <button
                   key={item.href}
                   onClick={() => setIsContactOpen(true)}
-                  className="font-medium transition-colors text-primary-foreground hover:text-primary cursor-pointer"
+                  className="font-medium transition-colors text-primary-foreground hover:text-accent cursor-pointer"
                 >
                   {item.label}
                 </button>
               ) : (
-                <a key={item.href} href={item.href} className="font-medium transition-colors text-primary-foreground">
+                <a key={item.href} href={item.href} className="font-medium transition-colors text-primary-foreground hover:text-accent">
                   {item.label}
                 </a>
               )
