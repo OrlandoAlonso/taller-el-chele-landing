@@ -1,4 +1,4 @@
-import { Settings, Wrench, Search, Disc } from "lucide-react";
+import { Settings, Wrench, Search, Disc, PaintBucket, Zap } from "lucide-react";
 
 const services = [
   {
@@ -24,6 +24,18 @@ const services = [
     title: "Frenos y Suspensión",
     description:
       "Cambio de pastillas, discos, amortiguadores y alineación para tu seguridad en el camino.",
+  },
+  {
+    icon: PaintBucket,
+    title: "Enderezado y Pintura",
+    description:
+      "Restauramos la carrocería de tu vehículo con enderezado profesional y pintura de alta calidad para dejarlo como nuevo.",
+  },
+  {
+    icon: Zap,
+    title: "Electricidad",
+    description:
+      "Diagnóstico y reparación del sistema eléctrico: alternador, motor de arranque, luces, sensores y cableado completo.",
   },
 ];
 
