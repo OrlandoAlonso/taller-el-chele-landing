@@ -37,34 +37,35 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import { phoneWhatsApp } from "@/constants/phone";
 
 // Generate available time slots based on day of week
 const getAvailableTimeSlots = (date: Date | undefined) => {
   if (!date) return [];
-  
+
   const dayOfWeek = date.getDay();
   const slots: string[] = [];
-  
+
   // Sunday (0) - closed
   if (dayOfWeek === 0) return [];
-  
+
   // Saturday (6) - 08:00 to 12:00
   if (dayOfWeek === 6) {
     for (let hour = 8; hour < 12; hour++) {
-      slots.push(`${hour.toString().padStart(2, '0')}:00`);
-      slots.push(`${hour.toString().padStart(2, '0')}:30`);
+      slots.push(`${hour.toString().padStart(2, "0")}:00`);
+      slots.push(`${hour.toString().padStart(2, "0")}:30`);
     }
     return slots;
   }
-  
+
   // Monday to Friday (1-5) - 08:00 to 17:30
   for (let hour = 8; hour < 17; hour++) {
-    slots.push(`${hour.toString().padStart(2, '0')}:00`);
-    slots.push(`${hour.toString().padStart(2, '0')}:30`);
+    slots.push(`${hour.toString().padStart(2, "0")}:00`);
+    slots.push(`${hour.toString().padStart(2, "0")}:30`);
   }
   slots.push("17:00");
   slots.push("17:30");
-  
+
   return slots;
 };
 
@@ -89,9 +90,7 @@ const appointmentSchema = z.object({
   date: z.date({
     required_error: "La fecha es requerida",
   }),
-  time: z
-    .string()
-    .min(1, { message: "La hora es requerida" }),
+  time: z.string().min(1, { message: "La hora es requerida" }),
 });
 
 type AppointmentFormValues = z.infer<typeof appointmentSchema>;
@@ -119,7 +118,10 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
   const availableSlots = getAvailableTimeSlots(selectedDate);
 
   // Reset time when date changes and close calendar
-  const handleDateChange = (date: Date | undefined, onChange: (date: Date | undefined) => void) => {
+  const handleDateChange = (
+    date: Date | undefined,
+    onChange: (date: Date | undefined) => void,
+  ) => {
     onChange(date);
     form.setValue("time", "");
     if (date) {
@@ -130,19 +132,21 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
   const onSubmit = async (data: AppointmentFormValues) => {
     setIsSubmitting(true);
 
-    const formattedDate = format(data.date, "EEEE d 'de' MMMM 'de' yyyy", { locale: es });
-    
+    const formattedDate = format(data.date, "EEEE d 'de' MMMM 'de' yyyy", {
+      locale: es,
+    });
+
     // Build WhatsApp message
     const whatsappMessage = encodeURIComponent(
       `¡Hola! Me gustaría agendar una cita.\n\n` +
-      `📋 *Datos de la cita:*\n` +
-      `👤 Nombre: ${data.name}\n` +
-      `📞 Teléfono: ${data.phone}\n` +
-      `📅 Fecha: ${formattedDate}\n` +
-      `🕐 Hora: ${data.time}\n\n` +
-      `¡Gracias!`
+        `*Datos de la cita:*\n` +
+        `    Nombre: ${data.name}\n` +
+        `    Teléfono: ${data.phone}\n` +
+        `    Fecha: ${formattedDate}\n` +
+        `    Hora: ${data.time}\n\n` +
+        `*¡Gracias!*`,
     );
-    const whatsappUrl = `https://wa.me/+50577725113?text=${whatsappMessage}`;
+    const whatsappUrl = `https://wa.me/${phoneWhatsApp}?text=${whatsappMessage}`;
 
     // Open WhatsApp
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
@@ -161,7 +165,9 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-display">Agenda tu Cita</DialogTitle>
+          <DialogTitle className="text-2xl font-display">
+            Agenda tu Cita
+          </DialogTitle>
           <DialogDescription>
             Selecciona fecha y hora para tu cita. Te confirmaremos por WhatsApp.
           </DialogDescription>
@@ -171,7 +177,9 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
           <p className="font-medium mb-1">Horarios de atención:</p>
           <p>Lunes a Viernes: 8:00 AM - 5:30 PM</p>
           <p>Sábados: 8:00 AM - 12:00 PM</p>
-          <p>Domingos: <span className="text-red-400">Cerrado</span></p>
+          <p>
+            Domingos: <span className="text-red-400">Cerrado</span>
+          </p>
         </div>
 
         <Form {...form}>
@@ -201,14 +209,22 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
                       <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm">
                         +505
                       </span>
-                      <Input 
-                        type="tel" 
-                        placeholder="8888 8888" 
+                      <Input
+                        type="tel"
+                        placeholder="8888 8888"
                         className="rounded-l-none"
                         maxLength={9}
-                        value={field.value ? field.value.replace(/(\d{4})(\d{0,4})/, '$1 $2').trim() : ''}
+                        value={
+                          field.value
+                            ? field.value
+                                .replace(/(\d{4})(\d{0,4})/, "$1 $2")
+                                .trim()
+                            : ""
+                        }
                         onChange={(e) => {
-                          const rawValue = e.target.value.replace(/\D/g, '').slice(0, 8);
+                          const rawValue = e.target.value
+                            .replace(/\D/g, "")
+                            .slice(0, 8);
                           field.onChange(rawValue);
                         }}
                       />
@@ -225,14 +241,17 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Fecha</FormLabel>
-                  <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
+                  <Popover
+                    open={isCalendarOpen}
+                    onOpenChange={setIsCalendarOpen}
+                  >
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
                           variant="outline"
                           className={cn(
                             "w-full pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
+                            !field.value && "text-muted-foreground",
                           )}
                         >
                           {field.value ? (
@@ -248,7 +267,9 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
                       <Calendar
                         mode="single"
                         selected={field.value}
-                        onSelect={(date) => handleDateChange(date, field.onChange)}
+                        onSelect={(date) =>
+                          handleDateChange(date, field.onChange)
+                        }
                         disabled={(date) => {
                           const today = new Date();
                           today.setHours(0, 0, 0, 0);
@@ -270,20 +291,22 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Hora</FormLabel>
-                  <Select 
-                    onValueChange={field.onChange} 
+                  <Select
+                    onValueChange={field.onChange}
                     value={field.value}
                     disabled={!selectedDate || availableSlots.length === 0}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder={
-                          !selectedDate 
-                            ? "Primero selecciona una fecha" 
-                            : availableSlots.length === 0 
-                              ? "Sin horarios disponibles"
-                              : "Selecciona una hora"
-                        } />
+                        <SelectValue
+                          placeholder={
+                            !selectedDate
+                              ? "Primero selecciona una fecha"
+                              : availableSlots.length === 0
+                                ? "Sin horarios disponibles"
+                                : "Selecciona una hora"
+                          }
+                        />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>

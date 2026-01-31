@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
+import { phoneWhatsApp } from "@/constants/phone";
 
 const contactSchema = z.object({
   name: z
@@ -32,8 +33,12 @@ const contactSchema = z.object({
   email: z
     .string()
     .trim()
-    .email({ message: "Correo electrónico inválido" })
-    .max(255, { message: "El correo debe tener menos de 255 caracteres" }),
+    .max(255, { message: "El correo debe tener menos de 255 caracteres" })
+    .optional()
+    .or(z.literal(""))
+    .refine((v) => v === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), {
+      message: "Correo electrónico inválido",
+    }),
   phone: z
     .string()
     .trim()
@@ -73,9 +78,9 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
 
     // Build WhatsApp message
     const whatsappMessage = encodeURIComponent(
-      `¡Hola! Mi nombre es ${data.name}.\n\nCorreo: ${data.email}\nTeléfono: ${data.phone}\n\nMensaje: ${data.message}`
+      `¡Hola! Mi nombre es ${data.name}.\n\nCorreo: ${data.email}\nTeléfono: ${data.phone}\n\nMensaje: ${data.message}`,
     );
-    const whatsappUrl = `https://wa.me/+50577725113?text=${whatsappMessage}`;
+    const whatsappUrl = `https://wa.me/${phoneWhatsApp}?text=${whatsappMessage}`;
 
     // Open WhatsApp
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
@@ -94,7 +99,9 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-display">Contáctanos</DialogTitle>
+          <DialogTitle className="text-2xl font-display">
+            Contáctanos
+          </DialogTitle>
           <DialogDescription>
             Completa el formulario y te responderemos por WhatsApp.
           </DialogDescription>
@@ -121,7 +128,7 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Correo electrónico</FormLabel>
+                  <FormLabel>Correo electrónico (Opcional)</FormLabel>
                   <FormControl>
                     <Input type="email" placeholder="tu@email.com" {...field} />
                   </FormControl>
@@ -141,14 +148,22 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
                       <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm">
                         +505
                       </span>
-                      <Input 
-                        type="tel" 
-                        placeholder="8888 8888" 
+                      <Input
+                        type="tel"
+                        placeholder="8888 8888"
                         className="rounded-l-none"
                         maxLength={9}
-                        value={field.value ? field.value.replace(/(\d{4})(\d{0,4})/, '$1 $2').trim() : ''}
+                        value={
+                          field.value
+                            ? field.value
+                                .replace(/(\d{4})(\d{0,4})/, "$1 $2")
+                                .trim()
+                            : ""
+                        }
                         onChange={(e) => {
-                          const rawValue = e.target.value.replace(/\D/g, '').slice(0, 8);
+                          const rawValue = e.target.value
+                            .replace(/\D/g, "")
+                            .slice(0, 8);
                           field.onChange(rawValue);
                         }}
                       />
