@@ -96,7 +96,7 @@ const Hero = () => {
             <span className="text-sm text-primary-foreground/70">Garantizado</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-3xl font-display font-bold text-accent">100%</span>
+            
             
           </div>
         </div>
