@@ -75,10 +75,10 @@ const Hero = () => {
         <div className="flex gap-4 items-center justify-center mt-6 animate-fade-in w-full" style={{
         animationDelay: "0.35s"
       }}>
-          <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center hover:bg-accent hover:scale-110 transition-all duration-300 group" aria-label="Facebook">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center hover:bg-accent hover:scale-110 transition-all duration-300 group ml-[15px] mx-[20px]" aria-label="Facebook">
             <FacebookIcon className="w-6 h-6 text-primary-foreground group-hover:text-accent-foreground" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center hover:bg-accent hover:scale-110 transition-all duration-300 group" aria-label="Instagram">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center hover:bg-accent hover:scale-110 transition-all duration-300 group mx-0 px-0 py-0 pl-0 ml-0" aria-label="Instagram">
             <InstagramIcon className="w-6 h-6 text-primary-foreground group-hover:text-accent-foreground" />
           </a>
         </div>
