@@ -87,7 +87,7 @@ const Header = () => {
                 );
               }
               return (
-                <a key={item.href} href={item.href} className="font-medium transition-colors text-primary-foreground hover:text-accent">
+                <a key={item.href} href={`/${item.href}`} className="font-medium transition-colors text-primary-foreground hover:text-accent">
                   {item.label}
                 </a>
               );
@@ -133,7 +133,7 @@ const Header = () => {
                   );
                 }
                 return (
-                  <a key={item.href} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="block py-3 px-4 rounded-lg text-foreground hover:bg-muted font-medium transition-colors">
+                  <a key={item.href} href={`/${item.href}`} onClick={() => setIsMobileMenuOpen(false)} className="block py-3 px-4 rounded-lg text-foreground hover:bg-muted font-medium transition-colors">
                     {item.label}
                   </a>
                 );
