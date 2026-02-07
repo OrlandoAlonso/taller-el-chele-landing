@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import type { Job } from "@/pages/Trabajos";
+import type { Job, JobImage } from "@/types/job";
 
 export const useJobs = () => {
   const { data: jobs = [], isLoading, error } = useQuery({
@@ -30,10 +30,11 @@ export const useJobs = () => {
         published_at: job.published_at,
         images: (imagesData || [])
           .filter((img) => img.job_id === job.id)
-          .map((img) => ({
+          .map((img): JobImage => ({
             id: img.id,
             url: img.url,
             sort_order: img.sort_order,
+            image_type: (img.image_type as "regular" | "before" | "after") || "regular",
           })),
       }));
 

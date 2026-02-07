@@ -5,14 +5,7 @@ import { useJobs } from "@/hooks/useJobs";
 import JobCard from "@/components/jobs/JobCard";
 import JobModal from "@/components/jobs/JobModal";
 import { Loader2 } from "lucide-react";
-
-export interface Job {
-  id: string;
-  title: string;
-  description: string | null;
-  published_at: string;
-  images: { id: string; url: string; sort_order: number }[];
-}
+import type { Job } from "@/types/job";
 
 const Trabajos = () => {
   const { jobs, isLoading } = useJobs();

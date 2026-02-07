@@ -2,7 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Image as ImageIcon } from "lucide-react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-import type { Job } from "@/pages/Trabajos";
+import type { Job } from "@/types/job";
+import { getBeforeAfterPairs } from "@/types/job";
 
 interface JobCardProps {
   job: Job;
@@ -10,7 +11,11 @@ interface JobCardProps {
 }
 
 const JobCard = ({ job, onClick }: JobCardProps) => {
-  const firstImage = job.images[0];
+  const beforeAfterPairs = getBeforeAfterPairs(job.images);
+  const hasBeforeAfter = beforeAfterPairs.length > 0;
+  const firstImage = hasBeforeAfter 
+    ? beforeAfterPairs[0].after // Show "after" as preview for before/after jobs
+    : job.images.find(img => img.image_type === "regular") || job.images[0];
 
   return (
     <Card 
@@ -35,6 +40,12 @@ const JobCard = ({ job, onClick }: JobCardProps) => {
           <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
             <ImageIcon className="w-3 h-3" />
             {job.images.length}
+          </div>
+        )}
+        {/* Before/After badge */}
+        {hasBeforeAfter && (
+          <div className="absolute bottom-2 left-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-medium">
+            Antes/Después
           </div>
         )}
       </div>
