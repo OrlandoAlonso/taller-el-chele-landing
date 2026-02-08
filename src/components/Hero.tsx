@@ -90,7 +90,7 @@ const Hero = () => {
             <Button
               variant="outline"
               size="xl"
-              className="group border-primary"
+              className="group border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition-colors"
               asChild
             >
               <a
@@ -115,11 +115,11 @@ const Hero = () => {
               href="https://www.facebook.com/tallerelchele1108/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-primary-foreground/20 backdrop-blur-sm hover:bg-accent hover:scale-105 transition-all duration-300 group"
+              className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-primary-foreground/20 backdrop-blur-sm hover:bg-blue-600 hover:scale-105 transition-all duration-300 group"
               aria-label="Facebook"
             >
-              <FacebookIcon className="w-5 h-5 text-primary-foreground group-hover:text-accent-foreground" />
-              <span className="text-sm font-medium text-primary-foreground group-hover:text-accent-foreground">
+              <FacebookIcon className="w-5 h-5 text-primary-foreground group-hover:dark:text-white" />
+              <span className="text-sm font-medium text-primary-foreground group-hover:dark:text-white">
                 Síguenos en Facebook
               </span>
             </a>

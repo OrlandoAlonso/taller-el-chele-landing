@@ -6,24 +6,24 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1200&auto=format&fit=crop",
-    alt: "Mecánico trabajando en motor",
+    src: "https://junxujvixlekdoidggom.supabase.co/storage/v1/object/public/job-images/banners/imagen_1.jpg",
+    alt: "Imagen 1",
   },
   {
-    src: "https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1200&auto=format&fit=crop",
-    alt: "Taller mecánico equipado",
+    src: "https://junxujvixlekdoidggom.supabase.co/storage/v1/object/public/job-images/banners/imagen_2.jpg",
+    alt: "Imagen 2",
   },
   {
-    src: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&auto=format&fit=crop",
-    alt: "Diagnóstico de vehículo",
+    src: "https://junxujvixlekdoidggom.supabase.co/storage/v1/object/public/job-images/banners/imagen_3.jpg",
+    alt: "Imagen 3",
   },
   {
-    src: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1200&auto=format&fit=crop",
-    alt: "Herramientas profesionales",
+    src: "https://junxujvixlekdoidggom.supabase.co/storage/v1/object/public/job-images/banners/imagen_4.jpg",
+    alt: "Imagen 4",
   },
   {
-    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&auto=format&fit=crop",
-    alt: "Reparación de frenos",
+    src: "https://junxujvixlekdoidggom.supabase.co/storage/v1/object/public/job-images/banners/imagen_5.jpg",
+    alt: "Imagen 5",
   },
 ];
 
@@ -38,13 +38,13 @@ const Gallery = () => {
 
   const goToPrevious = () => {
     setCurrentIndex((prev) =>
-      prev === 0 ? galleryImages.length - 1 : prev - 1
+      prev === 0 ? galleryImages.length - 1 : prev - 1,
     );
   };
 
   const goToNext = () => {
     setCurrentIndex((prev) =>
-      prev === galleryImages.length - 1 ? 0 : prev + 1
+      prev === galleryImages.length - 1 ? 0 : prev + 1,
     );
   };
 
@@ -72,7 +72,7 @@ const Gallery = () => {
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
-    
+
     if (isLeftSwipe) {
       goToNext();
     } else if (isRightSwipe) {
@@ -82,7 +82,10 @@ const Gallery = () => {
 
   return (
     <>
-      <section id="galeria" className="min-h-screen section-padding bg-background flex flex-col justify-center">
+      <section
+        id="taller"
+        className="min-h-screen section-padding bg-background flex flex-col justify-center"
+      >
         <div className="section-container">
           {/* Section Header */}
           <div className="text-center mb-12">
@@ -91,14 +94,15 @@ const Gallery = () => {
             </span>
             <h2 className="section-title text-center">Galería</h2>
             <p className="section-subtitle mx-auto text-center">
-              Conoce nuestras instalaciones y mira la calidad de nuestro trabajo.
+              Conoce nuestras instalaciones y mira la calidad de nuestro
+              trabajo.
             </p>
           </div>
 
           {/* Carousel */}
           <div className="relative max-w-5xl mx-auto">
             {/* Main Image */}
-            <div 
+            <div
               className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-muted cursor-pointer lg:cursor-default"
               onClick={handleImageClick}
               onTouchStart={onTouchStart}
@@ -115,7 +119,10 @@ const Gallery = () => {
               <Button
                 variant="secondary"
                 size="icon"
-                onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToPrevious();
+                }}
                 className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background shadow-lg hidden lg:flex"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -123,7 +130,10 @@ const Gallery = () => {
               <Button
                 variant="secondary"
                 size="icon"
-                onClick={(e) => { e.stopPropagation(); goToNext(); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToNext();
+                }}
                 className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background shadow-lg hidden lg:flex"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -180,7 +190,7 @@ const Gallery = () => {
       {/* Lightbox Modal */}
       <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
         <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95 border-none [&>button]:hidden">
-          <div 
+          <div
             className="relative w-full h-[80vh] flex items-center justify-center"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}

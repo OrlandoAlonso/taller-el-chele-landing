@@ -1,1 +1,1 @@
-export const phoneWhatsApp = "+50585729478";
+export const phoneWhatsApp = "+50557421867";
