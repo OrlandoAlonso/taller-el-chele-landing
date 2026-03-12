@@ -63,22 +63,53 @@ const getAvailableTimeSlots = (date: Date | undefined) => {
   // Sunday (0) - closed
   if (dayOfWeek === 0) return [];
 
+  const isToday = (() => {
+    const today = new Date();
+    return (
+      date.getFullYear() === today.getFullYear() &&
+      date.getMonth() === today.getMonth() &&
+      date.getDate() === today.getDate()
+    );
+  })();
+
+  const now = new Date();
+
+  const minimumMinutesToday = (() => {
+    if (!isToday) return 0;
+
+    const totalMinutes = now.getHours() * 60 + now.getMinutes();
+    const oneHourLater = totalMinutes + 60;
+
+    return oneHourLater;
+  })();
+
+  const addSlotIfValid = (hour: number, minute: number) => {
+    const slotMinutes = hour * 60 + minute;
+
+    if (isToday && slotMinutes < minimumMinutesToday) return;
+
+    slots.push(
+      `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`,
+    );
+  };
+
   // Saturday (6) - 08:00 to 12:00
   if (dayOfWeek === 6) {
     for (let hour = 8; hour < 12; hour++) {
-      slots.push(`${hour.toString().padStart(2, "0")}:00`);
-      slots.push(`${hour.toString().padStart(2, "0")}:30`);
+      addSlotIfValid(hour, 0);
+      addSlotIfValid(hour, 30);
     }
     return slots;
   }
 
   // Monday to Friday (1-5) - 08:00 to 17:30
   for (let hour = 8; hour < 17; hour++) {
-    slots.push(`${hour.toString().padStart(2, "0")}:00`);
-    slots.push(`${hour.toString().padStart(2, "0")}:30`);
+    addSlotIfValid(hour, 0);
+    addSlotIfValid(hour, 30);
   }
-  slots.push("17:00");
-  slots.push("17:30");
+
+  addSlotIfValid(17, 0);
+  addSlotIfValid(17, 30);
 
   return slots;
 };
