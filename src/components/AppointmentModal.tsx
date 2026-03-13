@@ -53,6 +53,10 @@ type AppointmentApiResponse = {
   error?: string;
 };
 
+const hasAvailableTimeSlots = (date: Date) => {
+  return getAvailableTimeSlots(date).length > 0;
+};
+
 // Generate available time slots based on day of week
 const getAvailableTimeSlots = (date: Date | undefined) => {
   if (!date) return [];
@@ -446,10 +450,23 @@ const AppointmentModal = ({ open, onOpenChange }: AppointmentModalProps) => {
                           disabled={(date) => {
                             const today = new Date();
                             today.setHours(0, 0, 0, 0);
-                            return date < today || !isBusinessDay(date);
+
+                            if (date < today) return true;
+                            if (!isBusinessDay(date)) return true;
+                            if (!hasAvailableTimeSlots(date)) return true;
+
+                            return false;
                           }}
                           initialFocus
                           className={cn("p-3 pointer-events-auto")}
+                          classNames={{
+                            cell: "relative p-0 text-center text-sm focus-within:relative focus-within:z-20",
+                            day: "h-9 w-9 p-0 font-normal rounded-md aria-selected:opacity-100",
+                            day_today:
+                              "bg-transparent text-foreground ring-1 ring-primary/50 rounded-md",
+                            day_selected:
+                              "bg-primary text-primary-foreground rounded-md hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+                          }}
                         />
                       </PopoverContent>
                     </Popover>
